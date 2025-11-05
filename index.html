@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anchor Protocol - The Decentralized Savings Protocol</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #667eea;
+            --light: #f8f9fa;
+            --dark: #1a1a1a;
+            --success: #27ae60;
+            --border: #e9ecef;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            color: var(--primary);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Sections */
+        .section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .section-dark {
+            background: var(--light);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Problem Solution */
+        .problem-solution {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .problem, .solution {
+            padding: 3rem;
+            border-radius: 15px;
+        }
+
+        .problem {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+        }
+
+        .solution {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+        }
+
+        .problem h3, .solution h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Engine Section */
+        .engine-flow {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pillar {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--secondary);
+            transition: all 0.3s ease;
+        }
+
+        .pillar:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .pillar h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Security Section */
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .security-item {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .security-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .security-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Roadmap */
+        .roadmap-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .roadmap-phase {
+            background: white;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--secondary);
+        }
+
+        .phase-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .phase-items {
+            list-style: none;
+        }
+
+        .phase-items li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .phase-items li:last-child {
+            border-bottom: none;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .problem-solution { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .hero-buttons { flex-direction: column; }
+            .section-header h2 { font-size: 2rem; }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">Anchor<span>Protocol</span></a>
+            <nav class="nav-links">
+                <a href="#solution">The Protocol</a>
+                <a href="#engine">How It Works</a>
+                <a href="#security">Security</a>
+                <a href="#roadmap">Vision</a>
+                <a href="#litepaper" class="cta-button secondary">Read Manifesto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Stop Gambling. Start Building.</h1>
+            <p>This is not another coin. This is the antidote to speculation. The first decentralized savings protocol, engineered to transform your wallet into a self-funding fortress. Your safe harbor is now open.</p>
+            <div class="hero-buttons">
+                <a href="#cta" class="cta-button">Enter the Harbor</a>
+                <a href="#engine" class="cta-button secondary">Witness the Engine</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem/Solution Section -->
+    <section class="section" id="solution">
+        <div class="container">
+            <div class="section-header">
+                <h2>The Casino is Closed.</h2>
+            </div>
+            <div class="problem-solution">
+                <div class="problem">
+                    <h3>The Problem</h3>
+                    <p>You were promised a new financial system. You were given a rigged game where the founders hold the cards. Volatility is the weapon. Your trust is the target.</p>
+                </div>
+                <div class="solution">
+                    <h3>Our Solution</h3>
+                    <p>We didn't reform the game. We built the bank. Project Anchor is a new economic layer: a trustless savings protocol. This is not an asset to trade. It is the ground upon which to build your legacy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Engine Section -->
+    <section class="section section-dark" id="engine">
+        <div class="container">
+            <div class="section-header">
+                <h2>The Perpetual Motion Machine for Your Wealth</h2>
+                <p>Imagine an asset that grows stronger with every heartbeat of its economy. That pays you for your conviction and reinvests in its own future—automatically, unstoppably.</p>
+            </div>
+
+            <div class="engine-flow">
+                <div class="mermaid">
+graph TD
+    A[Any Buy/Sell Transaction] --> B{6% Engine Fuel}
+    B --> C["2% Loyalty Dividend"]
+    B --> D["2% Automated Fortress"]
+    B --> E["2% Sovereign Treasury"]
+    C --> F[Free ANCOR to Holders]
+    D --> G[Permanent LP Lock]
+    E --> H[Protocol Growth Fund]
+    F --> I[💰 You Earn for Believing]
+    G --> J[🛡️ Rising Price Floor]
+    H --> K[🚀 Ecosystem Expansion]
+    I & J & K --> L[THE ANCHOR EMPIRE GROWS STRONGER]
+                </div>
+            </div>
+
+            <div class="pillars">
+                <div class="pillar">
+                    <h4>🎯 The Loyalty Dividend</h4>
+                    <p>2% of all volume is automatically distributed to holders. You earn, simply for believing.</p>
+                </div>
+                <div class="pillar">
+                    <h4>🏰 The Automated Fortress</h4>
+                    <p>2% is permanently converted and locked as liquidity. This is a continuous, algorithmic buy-back that raises the price floor forever.</p>
+                </div>
+                <div class="pillar">
+                    <h4>⚔️ The Sovereign Treasury</h4>
+                    <p>2% funds the perpetual growth of the ecosystem. Your prosperity is systematically funded.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Section -->
+    <section class="section" id="security">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Promises Are Written in Code.</h2>
+                <p>We offer you nothing to believe in. Only a system to verify.</p>
+            </div>
+
+            <div class="security-grid">
+                <div class="security-item">
+                    <div class="security-icon">🔒</div>
+                    <h4>The Liquidity is Eternal</h4>
+                    <p>Locked in a dead wallet. Forever. The concept of a "rug pull" is obsolete here.</p>
+                </div>
+                <div class="security-item">
+                    <div class="security-icon">⚖️</div>
+                    <h4>The Contract is Ownerless</h4>
+                    <p>We will renounce control. The rules cannot be changed. Ever.</p>
+                </div>
+                <div class="security-item">
+                    <div class="security-icon">🐋</div>
+                    <h4>The Playing Field is Level</h4>
+                    <p>Hard-coded limits prevent whale manipulation. Max wallet: 1%. Max transaction: 0.25%.</p>
+                </div>
+                <div class="security-item">
+                    <div class="security-icon">🔍</div>
+                    <h4>The Code is Sacred</h4>
+                    <p>Audited and verified by the foremost security minds in the world before a single token is born.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section class="section section-dark" id="roadmap">
+        <div class="container">
+            <div class="section-header">
+                <h2>We Are Not Building a Roadmap. We Are Building an Empire.</h2>
+                <p>The token is the spark. This is the fire.</p>
+            </div>
+
+            <div class="roadmap-timeline">
+                <div class="roadmap-phase">
+                    <div class="phase-title">PHASE 1: IGNITION</div>
+                    <ul class="phase-items">
+                        <li>Launch of the Unbreakable Protocol</li>
+                        <li>The Anchor DApp & Stability Vault</li>
+                        <li>Global Exchange Onboarding</li>
+                        <li>Genesis of the Anchor Node NFTs</li>
+                    </ul>
+                </div>
+
+                <div class="roadmap-phase">
+                    <div class="phase-title">PHASE 2: DOMINION</div>
+                    <ul class="phase-items">
+                        <li>The Anchor Mobile Banking Experience</li>
+                        <li>Multi-Chain Sovereignty</li>
+                        <li>Global Debit Card Integration</li>
+                        <li>Institutional-Grade Treasury Tools</li>
+                    </ul>
+                </div>
+
+                <div class="roadmap-phase">
+                    <div class="phase-title">PHASE 3: LEGACY</div>
+                    <ul class="phase-items">
+                        <li>Full Decentralized Autonomous Governance</li>
+                        <li>Real-World Asset Vaults</li>
+                        <li>The Global Collateral Standard</li>
+                        <li>Onboarding the First Billion Users</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-section" id="cta">
+        <div class="container">
+            <h2>You Have Witnessed the Blueprint. The Choice is Now Yours.</h2>
+            <p>This is the line between the past and the future. Between being a user of a system and a founder of an ecosystem.</p>
+            <div class="hero-buttons">
+                <a href="#" class="cta-button">Become a Founder</a>
+                <a href="#" class="cta-button secondary">Read the Manifesto</a>
+            </div>
+            <p style="margin-top: 2rem; font-size: 1.1rem; opacity: 0.8;">The market is volatile. You no longer have to be.<br>Anchor Protocol.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Anchor Protocol. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Mermaid
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            securityLevel: 'loose',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for animation
+        document.querySelectorAll('.section, .hero, .cta-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
