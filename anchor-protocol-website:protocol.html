@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anchor Protocol | How It Works</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="index.html">Anchor Protocol</a>
+      </div>
+      <div class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="protocol.html" class="nav-link active">Protocol</a>
+        <a href="security.html" class="nav-link">Security</a>
+        <a href="vision.html" class="nav-link">Vision</a>
+        <a href="our-anchor.html" class="nav-link">Our Anchor</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>The Protocol</h1>
+      <p class="hero-subtitle">
+        A transparent, trustless yield mechanism powered by staked assets and decentralized governance.
+      </p>
+    </div>
+  </section>
+
+  <!-- Core Mechanics -->
+  <section class="problem-solution">
+    <div class="container">
+      <h2>Core Mechanics</h2>
+      <div class="ps-grid">
+        <div class="ps-column">
+          <div class="ps-item">
+            <div class="ps-icon">💧</div>
+            <h4>Stable Yield</h4>
+            <p>
+              Anchor delivers consistent returns by tapping into staking rewards from bonded assets across multiple blockchains.
+            </p>
+          </div>
+
+          <div class="ps-item">
+            <div class="ps-icon">🛠️</div>
+            <h4>Collateralized Lending</h4>
+            <p>
+              Depositors earn yield while borrowers post liquid staking tokens (LSTs) as collateral — creating a self-sustaining loop.
+            </p>
+          </div>
+        </div>
+
+        <div class="ps-column">
+          <div class="ps-item">
+            <div class="ps-icon">🔗</div>
+            <h4>Cross-Chain Integration</h4>
+            <p>
+              Anchor expands beyond one ecosystem through bridges and IBC protocols, ensuring universal access to yield.
+            </p>
+          </div>
+
+          <div class="ps-item">
+            <div class="ps-icon">⚖️</div>
+            <h4>Dynamic Yield Adjustment</h4>
+            <p>
+              Governance mechanisms automatically calibrate returns based on staking yield trends, reserve ratios, and demand.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flow Diagram -->
+  <section class="engine-teaser">
+    <div class="container">
+      <h2>Protocol Architecture</h2>
+      <p class="teaser-subtitle">A visual map of how Anchor generates, maintains, and distributes yield.</p>
+
+      <div class="engine-preview">
+        <div class="mermaid">
+          graph TD
+            A[Depositors] --> B[Deposit Stablecoins]
+            B --> C[Lending Pool]
+            C --> D[Borrowers]
+            D --> E[Collateral: LSTs]
+            E --> F[Staking Rewards]
+            F --> G[Yield Reserve]
+            G --> H[Interest Distribution]
+            H --> A
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <h3>Anchor Protocol</h3>
+        <p>Securing stable yield for a decentralized future.</p>
+      </div>
+      <div class="footer-links">
+        <a href="protocol.html">Protocol</a>
+        <a href="security.html">Security</a>
+        <a href="vision.html">Vision</a>
+        <a href="our-anchor.html">Our Anchor</a>
+        <a href="blog.html">Blog</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

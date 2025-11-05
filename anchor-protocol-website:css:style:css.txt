@@ -1,0 +1,319 @@
+:root {
+    --deep-navy: #0A1A2F;
+    --emerald: #00B894;
+    --coral: #FF7675;
+    --royal-purple: #6C5CE7;
+    --clean-white: #FFFFFF;
+    --light-gray: #F5F6FA;
+    --dark-charcoal: #2D3436;
+    --soft-text: #636e72;
+    
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --border-radius: 12px;
+    --transition: all 0.3s ease;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    color: var(--dark-charcoal);
+    background: var(--clean-white);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ==========================
+   NAVIGATION
+========================== */
+.navbar {
+    background: var(--clean-white);
+    box-shadow: var(--shadow);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo a {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--deep-navy);
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--dark-charcoal);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-link:hover {
+    color: var(--emerald);
+}
+
+/* ==========================
+   HERO SECTION
+========================== */
+.hero {
+    padding: 120px 0 80px;
+    background: linear-gradient(135deg, var(--light-gray) 0%, var(--clean-white) 100%);
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--deep-navy);
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    color: var(--soft-text);
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ==========================
+   BUTTONS
+========================== */
+.btn {
+    display: inline-block;
+    padding: 12px 32px;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background: var(--emerald);
+    color: var(--clean-white);
+}
+
+.btn-primary:hover {
+    background: #00a085;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 184, 148, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--deep-navy);
+    border: 2px solid var(--deep-navy);
+}
+
+.btn-secondary:hover {
+    background: var(--deep-navy);
+    color: var(--clean-white);
+    transform: translateY(-2px);
+}
+
+/* ==========================
+   PROBLEM / SOLUTION SECTION
+========================== */
+.problem-solution {
+    padding: 80px 0;
+    background: var(--clean-white);
+}
+
+.problem-solution h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--deep-navy);
+}
+
+.ps-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.ps-column h3 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--deep-navy);
+    text-align: center;
+}
+
+.ps-item {
+    background: var(--light-gray);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 1.5rem;
+    transition: var(--transition);
+}
+
+.ps-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.ps-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.ps-item h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--dark-charcoal);
+}
+
+.ps-item p {
+    color: var(--soft-text);
+}
+
+/* ==========================
+   ENGINE TEASER SECTION
+========================== */
+.engine-teaser {
+    padding: 80px 0;
+    background: var(--light-gray);
+}
+
+.engine-teaser h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--deep-navy);
+}
+
+.teaser-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--soft-text);
+    margin-bottom: 3rem;
+}
+
+.engine-preview {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.preview-cta {
+    margin-top: 2rem;
+}
+
+/* Mermaid Diagram Styling */
+.mermaid {
+    background: var(--clean-white);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+/* ==========================
+   FOOTER
+========================== */
+.footer {
+    background: var(--deep-navy);
+    color: var(--clean-white);
+    padding: 3rem 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.footer-brand h3 {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-links a {
+    color: var(--clean-white);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--emerald);
+}
+
+/* ==========================
+   RESPONSIVE DESIGN
+========================== */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .ps-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .nav-menu {
+        display: none; /* Placeholder for mobile nav later */
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-links {
+        justify-content: center;
+    }
+}
+
